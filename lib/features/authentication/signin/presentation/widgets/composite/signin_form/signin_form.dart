@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:tna_app/common/theme/main_theme.dart';
+import 'package:tna_app/features/authentication/signin/presentation/widgets/components/signin_auth_button.dart';
 import 'package:tna_app/features/authentication/signin/presentation/widgets/components/signin_text_field.dart';
 
-class SigninForm extends StatefulWidget {
-  const SigninForm({super.key});
+class SigninForm extends StatelessWidget {
+  final TextEditingController usenameController;
+  final TextEditingController passwordController;
+  final VoidCallback onPressedAuth;
 
-  @override
-  State<StatefulWidget> createState() => _SigninFormState();
-}
-
-class _SigninFormState extends State<SigninForm> {
-  final _signinUsernameController = TextEditingController();
-  final _signinPasswordController = TextEditingController();
-
-  @override
-  void dispose() {
-    _signinUsernameController.dispose();
-    _signinPasswordController.dispose();
-    super.dispose();
-  }
+  const SigninForm({
+    super.key,
+    required this.usenameController,
+    required this.passwordController,
+    required this.onPressedAuth,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,25 +24,20 @@ class _SigninFormState extends State<SigninForm> {
         SigninTextField(
           label: '아이디',
           hint: 'Enter username',
-          controller: _signinUsernameController,
+          controller: usenameController,
         ),
         const SizedBox(height: 8),
         SigninTextField(
           label: '비밀번호',
           hint: 'Enter password',
-          controller: _signinPasswordController,
+          controller: passwordController,
           obscureText: true,
         ),
-        const SizedBox(width: 8),
-        ElevatedButton(
-          onPressed: () => {},
-          style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(3),
-            ),
-            // padding: const EdgeInsets.symmetric(vertical: 24.0),
-          ),
-          child: const Text('Login'),
+        const SizedBox(width: 8, height: 8),
+        SigninAuthButton(
+          onPressed: onPressedAuth,
+          buttonTitle: "로그인",
+          buttonColor: jorimGreen,
         ),
       ],
     );
