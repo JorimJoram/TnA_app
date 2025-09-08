@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tna_app/common/theme/main_theme.dart';
 import 'package:tna_app/features/authentication/signin/presentation/widgets/components/signin_auth_button.dart';
+import 'package:tna_app/features/authentication/signin/presentation/widgets/components/signin_text_button.dart';
 import 'package:tna_app/features/authentication/signin/presentation/widgets/components/signin_text_field.dart';
 
 class SigninForm extends StatelessWidget {
@@ -38,6 +39,14 @@ class SigninForm extends StatelessWidget {
           onPressed: onPressedAuth,
           buttonTitle: "로그인",
           buttonColor: jorimGreen,
+        ),
+        const SizedBox(height: 8),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SigninTextButton(buttonTitle: "아이디/비밀번호 찾기"),
+            SigninTextButton(buttonTitle: "회원가입"),
+          ],
         ),
       ],
     );
