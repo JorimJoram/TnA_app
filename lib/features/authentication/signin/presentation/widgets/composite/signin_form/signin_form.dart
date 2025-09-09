@@ -8,12 +8,16 @@ class SigninForm extends StatelessWidget {
   final TextEditingController usenameController;
   final TextEditingController passwordController;
   final VoidCallback onPressedAuth;
+  final VoidCallback? toSignup;
+  final VoidCallback? toFind;
 
   const SigninForm({
     super.key,
     required this.usenameController,
     required this.passwordController,
     required this.onPressedAuth,
+    this.toSignup,
+    this.toFind,
   });
 
   @override
@@ -45,7 +49,7 @@ class SigninForm extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SigninTextButton(buttonTitle: "아이디/비밀번호 찾기"),
-            SigninTextButton(buttonTitle: "회원가입"),
+            SigninTextButton(buttonTitle: "회원가입", onPressed: toSignup),
           ],
         ),
       ],

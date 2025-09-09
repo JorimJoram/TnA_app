@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tna_app/features/authentication/signin/presentation/widgets/composite/signin_form/signin_form.dart';
+import 'package:tna_app/features/authentication/signup/presentation/signup_core_screen.dart';
 
 class SigninScreen extends StatefulWidget {
   const SigninScreen({super.key});
@@ -39,6 +40,7 @@ class _SigninScreenState extends State<SigninScreen> {
                         usenameController: _usernameController,
                         passwordController: _passwordController,
                         onPressedAuth: _handleAuth,
+                        toSignup: toSignup,
                       ),
                     ],
                   ),
@@ -54,5 +56,12 @@ class _SigninScreenState extends State<SigninScreen> {
   void _handleAuth() {
     final String username = _usernameController.text;
     final String password = _passwordController.text;
+  }
+
+  void toSignup() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SignupCoreScreen()),
+    );
   }
 }
