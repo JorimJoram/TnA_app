@@ -15,11 +15,28 @@ class _SignupCoreScreenState extends State<SignupCoreScreen> {
   final passwordController = TextEditingController();
   final confirmController = TextEditingController(); //비밀번호 확인
 
+  late FocusNode _usernameFocusNode;
+  late FocusNode _passwordFocusNode;
+  late FocusNode _confirmFocusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _usernameFocusNode = FocusNode();
+    _passwordFocusNode = FocusNode();
+    _confirmFocusNode = FocusNode();
+  }
+
   @override
   void dispose() {
     usernameController.dispose();
     passwordController.dispose();
     confirmController.dispose();
+
+    _usernameFocusNode.dispose();
+    _passwordFocusNode.dispose();
+    _confirmFocusNode.dispose();
+
     super.dispose();
   }
 
@@ -45,6 +62,10 @@ class _SignupCoreScreenState extends State<SignupCoreScreen> {
                         usernameController: usernameController,
                         passwordController: passwordController,
                         confirmController: confirmController,
+
+                        usernameFocusNode: _usernameFocusNode,
+                        passwordFocusNode: _passwordFocusNode,
+                        confirmFocusNode: _confirmFocusNode,
                       ),
                       SignupCoreBottom(),
                     ],
