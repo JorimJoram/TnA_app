@@ -57,7 +57,7 @@ class _SignupCoreScreenState extends State<SignupCoreScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      SignupCoreHeader(onPress: backToLogin),
+                      SignupCoreHeader(toBack: backToLogin, toLogin: toLogin),
                       SignupCoreForm(
                         usernameController: usernameController,
                         passwordController: passwordController,
@@ -83,6 +83,13 @@ class _SignupCoreScreenState extends State<SignupCoreScreen> {
     Navigator.pop(
       context,
       MaterialPageRoute(builder: (context) => SigninScreen()),
+    );
+  }
+
+  void toLogin() {
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (context) => SigninScreen()),
+      (Route<dynamic> route) => false,
     );
   }
 }

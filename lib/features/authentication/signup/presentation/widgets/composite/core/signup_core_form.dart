@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tna_app/features/authentication/signup/presentation/widgets/composite/comm/signup_text_field.dart';
+import 'package:tna_app/features/authentication/signup/presentation/widgets/components/comm/signup_text_field.dart';
+import 'package:tna_app/features/authentication/signup/presentation/widgets/components/comm/signup_validate_button.dart';
 
 class SignupCoreForm extends StatelessWidget {
   final TextEditingController usernameController;
@@ -27,14 +28,21 @@ class SignupCoreForm extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.max,
       children: [
-        SignupTextField(
-          labelText: 'username',
-          hintText: '아이디를 입력해주세요',
-          focusNode: usernameFocusNode,
-          textInputAction: TextInputAction.next,
-          onSubmitted: (_) {
-            FocusScope.of(context).requestFocus(passwordFocusNode);
-          },
+        Row(
+          children: [
+            Expanded(
+              child: SignupTextField(
+                labelText: 'username',
+                hintText: '아이디를 입력해주세요',
+                focusNode: usernameFocusNode,
+                textInputAction: TextInputAction.next,
+                onSubmitted: (_) {
+                  FocusScope.of(context).requestFocus(passwordFocusNode);
+                },
+              ),
+            ),
+            SignupValidateButton(isDisabled: false, buttonTitle: "확인"),
+          ],
         ),
         SignupTextField(
           labelText: 'password',
